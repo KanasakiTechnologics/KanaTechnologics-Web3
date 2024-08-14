@@ -16,17 +16,21 @@
 </head>
 <body>
 	<style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
         body {
             background: url('../asset/night_wall1.jpg') no-repeat center center fixed;
-            background-repeat: no-repeat;
-            height: 100%;
-            background-attachment: fixed;
             background-size: cover;
         }
     </style>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     	<div class="container">
-        	<a class="navbar-brand" href="./index.html">
+        	<a class="navbar-brand" href="../index.html">
             <img class="d-inline-block align-center" src="../asset/icon1.png" width="30" height="30"> KanaWebsite3RD
         	</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +45,7 @@
                     <a class="nav-link" href="../index.html#aboutus">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Catalogue</a>
+                    <a class="nav-link" href="./catalogue.html">Catalogue</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Elements</a>
@@ -122,7 +126,7 @@
                 		<li class="list-group-item" onclick="changeVideo('videoPlayer3', 'videoSource3','../Hige wo Soru. Soshite Joshikousei wo Hirou/Watch Hige wo Soru. Soshite Joshikousei wo Hirou. Episode 1.mp4')">Episode 1</li>
                 		<li class="list-group-item" onclick="changeVideo('videoPlayer3', 'videoSource3','../Hige wo Soru. Soshite Joshikousei wo Hirou/Watch Hige wo Soru. Soshite Joshikousei wo Hirou. Episode 2.mp4')">Episode 2</li>
                 		<li class="list-group-item" onclick="changeVideo('videoPlayer3', 'videoSource3','../Hige wo Soru. Soshite Joshikousei wo Hirou/Watch Hige wo Soru. Soshite Joshikousei wo Hirou. Episode 3.mp4')">Episode 3</li>
-                		<li class="list-group-item" onclick="changeVideo('../Hige wo Soru. Soshite Joshikousei wo Hirou/Watch Hige wo Soru. Soshite Joshikousei wo Hirou. Episode 4.mp4')">Episode 4</li>
+                		<li class="list-group-item" onclick="changeVideo('videoPlayer3', 'videoSource3','../Hige wo Soru. Soshite Joshikousei wo Hirou/Watch Hige wo Soru. Soshite Joshikousei wo Hirou. Episode 4.mp4')">Episode 4</li>
             		</ul>
         		</div>
     		</div>
@@ -130,13 +134,20 @@
 	</div>
 	</div>
 	<script>
-		function changeVideo(videoSrc) {
-    		var videoPlayer = document.getElementById('videoPlayer');
-    		var videoSource = document.getElementById('videoSource');
-    		videoSource.src = videoSrc;
-    		videoPlayer.load();
-    		videoPlayer.play();
+    	function changeVideo(playerId, sourceId, videoSrc) {
+        	var videoPlayer = document.getElementById(playerId);
+        	var videoSource = document.getElementById(sourceId);
+        	videoSource.src = videoSrc;
+        	videoPlayer.load();
+        	videoPlayer.play();
 		}
+
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                document.body.style.background = "url('../asset/night_wall1.jpg') no-repeat center center fixed";
+                document.body.style.backgroundSize = "cover";
+            }
+        });
 	</script>
 </body>
 </html>
